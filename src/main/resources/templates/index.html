@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assembler Program Interface</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        .program-view, .form-section {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            padding: 10px;
+            width: 33%;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+        .wrapper p {
+            padding: 0 5px;
+            border: solid black 1px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<h1>Assembler Program Interface</h1>
+
+<div class="container">
+    <div class="program-view">
+        <h2>Program View</h2>
+        <table>
+            <thead>
+               <tr>
+                   <th>Address</th>
+                   <th>Label</th>
+                   <th>OP Code</th>
+                   <th>Other info</th>
+                   <th>Operations</th>
+               </tr>
+            </thead>
+            <tbody id="programList">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-section">
+        <h2>Add New Operator</h2>
+        <select id="operatorType">
+            <option value="register">Register Operator</option>
+            <option value="memory">Memory Operator</option>
+            <option value="jump">Jump Operator</option>
+            <option value="data">Data Declaration Operator</option>
+        </select>
+        <form id="addForm">
+            <input type="number" min="0" value="0" id="address" placeholder="Address" required/><br/>
+            <input type="text" id="label" placeholder="Label" required/><br/>
+            <input type="text" id="operationCode" placeholder="Operation Code" required/><br/>
+            <div id="extraFields">
+            </div>
+            <button id="addInstruction" type="button">Add Instruction</button>
+        </form>
+
+        <button id="checkIdentifiersButton">Check Identifiers</button>
+    </div>
+    <div class="additional-section">
+        <div id="response"></div>
+    </div>
+</div>
+</body>
+</html>
